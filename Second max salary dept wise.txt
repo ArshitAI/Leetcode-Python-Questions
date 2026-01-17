@@ -1,0 +1,19 @@
+WITH SalaryCTE AS (
+    SELECT
+        id,
+        name,
+        dept,
+        salary,
+        DENSE_RANK() OVER (
+            PARTITION BY dept
+            ORDER BY salary DESC
+        ) AS salary_rank
+    FROM Employee
+)
+SELECT
+    id,
+    name,
+    dept,
+    salary
+FROM SalaryCTE
+WHERE salary_rank = 2;
