@@ -1,0 +1,35 @@
+ONE TO TEN
+WITH Numbers AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n + 1
+    FROM Numbers
+    WHERE n < 10
+)
+SELECT n
+FROM Numbers
+OPTION (MAXRECURSION 10);
+
+Table of two 
+WITH TableOfTwo AS (
+    SELECT 1 AS n, 2 AS result
+    UNION ALL
+    SELECT n + 1, 2 * (n + 1)
+    FROM TableOfTwo
+    WHERE n < 10
+)
+SELECT result
+FROM TableOfTwo
+OPTION (MAXRECURSION 10);
+
+Fibonacci Series
+WITH Fibonacci AS (
+    SELECT 0 AS a, 1 AS b, 1 AS n
+    UNION ALL
+    SELECT b, a + b, n + 1
+    FROM Fibonacci
+    WHERE n < 10
+)
+SELECT a
+FROM Fibonacci
+OPTION (MAXRECURSION 10);
