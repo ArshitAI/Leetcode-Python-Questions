@@ -1,0 +1,3 @@
+SELECT str,
+LEN(str) - LEN(REPLACE(str, 'a', '')) 
+FROM table_name;
